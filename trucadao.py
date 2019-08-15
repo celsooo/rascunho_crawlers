@@ -4,7 +4,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
 import pandas as pd
 my_url = "https://www.trucadao.com.br/venda/caminhoes-usados"
-
+#comentario
 uClient = urlopen(my_url)
 page_html = uClient.read()
 uClient.close()
