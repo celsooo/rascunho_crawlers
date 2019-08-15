@@ -1,8 +1,7 @@
 # -*- coding: UTF-8 -*-
-import bs4
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
-import pandas as pd
+from openpyxl import Workbook
 my_url = "https://www.trucadao.com.br/venda/caminhoes-usados"
 #comentario
 uClient = urlopen(my_url)
@@ -21,10 +20,31 @@ modelo = page_soup.find_all("span", {"itemprop":"model"})
 local = page_soup.find_all("span", {"itemprop":"addressLocality"})
 
 
+#Utilizacao do OpenPyxl
+book = Workbook()
+sheet = book.active
+
+for row in range(40):
+    rows = (
+        (preco[row].text, titulo[row].text)
+    )
+    sheet.append(rows)
+    row = row +1
+
+book.save("trucadao.xlsx")
+
+
+
+
+
+
+
+
+
 #Extração do link - REFINAR
 #link2 = page_soup.find_all('a', {"class":"link-full-ad col-xs-12"})
 
-
+'''
 for a in range(40):
     print(titulo[a].text)
     print(preco[a].text)
@@ -32,3 +52,4 @@ for a in range(40):
     print(marca[a].text)
     print(modelo[a].text)
     print(local[a].text)
+    '''
