@@ -2,7 +2,7 @@
 import bs4
 from urllib.request import urlopen
 from bs4 import BeautifulSoup as soup
-import re
+import pandas as pd
 my_url = "https://www.trucadao.com.br/venda/caminhoes-usados"
 
 uClient = urlopen(my_url)
