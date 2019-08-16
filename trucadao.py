@@ -7,8 +7,9 @@ from openpyxl import Workbook
 book = Workbook()
 sheet = book.active
 
-
-for page in range(1, 4):
+num_page = input("How many pages do you wish to go through?")#To do: insert error handling for page number greater than available
+page = 1
+for page in range(1, int(num_page)+1):
     my_url = "https://www.trucadao.com.br/venda/caminhoes-usados?page=" + str(page)
     print(my_url)
     uClient = urlopen(my_url)
@@ -23,6 +24,7 @@ for page in range(1, 4):
     marca = page_soup.find_all("span", {"itemprop":"name"})
     modelo = page_soup.find_all("span", {"itemprop":"model"})
     local = page_soup.find_all("span", {"itemprop":"addressLocality"})
+    ### TO DO: find out link pattern to insert
     page = page + 1
     my_url = ("https://www.trucadao.com.br/venda/caminhoes-usados?page=" + str(page))
 
@@ -40,5 +42,5 @@ book.save("trucadao.xlsx")
 
 #Extração do link - REFINAR
 #link2 = page_soup.find_all('a', {"class":"link-full-ad col-xs-12"})
-'''
+
 
