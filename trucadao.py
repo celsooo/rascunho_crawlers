@@ -8,7 +8,7 @@ book = Workbook()
 sheet = book.active
 
 
-for page in range(1, 3):
+for page in range(1, 4):
     my_url = "https://www.trucadao.com.br/venda/caminhoes-usados?page=" + str(page)
     print(my_url)
     uClient = urlopen(my_url)
