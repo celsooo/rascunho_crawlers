@@ -7,7 +7,7 @@ from openpyxl import Workbook
 book = Workbook()
 sheet = book.active
 
-num_page = input("How many pages do you wish to go through?")#To do: insert error handling for page number greater than available
+num_page = input("How many pages do you wish to go through? ")#To do: insert error handling for page number greater than available
 page = 1
 for page in range(1, int(num_page)+1):
     my_url = "https://www.trucadao.com.br/venda/caminhoes-usados?page=" + str(page)
@@ -25,8 +25,7 @@ for page in range(1, int(num_page)+1):
     modelo = page_soup.find_all("span", {"itemprop":"model"})
     local = page_soup.find_all("span", {"itemprop":"addressLocality"})
     ### TO DO: find out link pattern to insert
-    page = page + 1
-    my_url = ("https://www.trucadao.com.br/venda/caminhoes-usados?page=" + str(page))
+
 
     for row in range(40):
         rows = (
